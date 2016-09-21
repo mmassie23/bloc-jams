@@ -27,6 +27,16 @@ var albumPicasso = {
          { title: 'Wrong phone number', duration: '2:15'}
      ]
  };
+ var albumJCole = {
+     title: 'Born Sinner',
+     arist: 'J. Cole',
+     label: 'R',
+     year: '2007',
+     albumArtUrl: 'https://upload.wikimedia.org/wikipedia/en/f/fa/J_Cole_Born_Sinner3.jpg',
+     songs: [
+         {title: 'Power Trip', duration: '2:45'}
+     ]
+ };
 var createSongRow = function(songNumber, songName, songLength){
     var template = 
         '<tr class="album-view-song-item">'
@@ -59,3 +69,13 @@ var setCurrentAlbum = function(album) {
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
  };
+var scroller = document.getElementsByClassName("album-view-song-item");
+scroller.onclick = function(){
+  var aList = scroller.childNodes();
+  for(var i = 0; i < aList.length; i++){
+      if(i === (aList.length - 1)){
+          i = 0;
+      }
+      setCurrentAlbum(aList[i]);
+  }
+};
