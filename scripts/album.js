@@ -70,12 +70,21 @@ var setCurrentAlbum = function(album) {
      setCurrentAlbum(albumPicasso);
  };
 var scroller = document.getElementsByClassName("album-view-song-item");
-scroller.onclick = function(){
-  var aList = scroller.childNodes();
-  for(var i = 0; i < aList.length; i++){
-      if(i === (aList.length - 1)){
+var songList = scroller.childNodes();
+scroller.onclick = function(songList){
+  for(var i = 0; i < songList.length; i++){
+      if(i === (songList.length - 1)){
           i = 0;
       }
-      setCurrentAlbum(aList[i]);
+      setCurrentAlbum(songList[i]);
   }
 };
+var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
+var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
+window.onload = function(){
+    setCurrentAlbum(albumPicasso);
+    songListContainer.addEventListener('mouseover', function(event){
+        console.log(event.target);
+        
+    });
+}
